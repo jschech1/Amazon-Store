@@ -1,3 +1,5 @@
+// require("console.table");
+
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
@@ -18,9 +20,11 @@ connection.connect(function (err) {
 
 function queryAllProducts() {
     connection.query("SELECT * FROM products", function (err, res) {
-        for (var i = 0; i < res.length; i++) {
-            console.log("Item ID: " + res[i].id + " | " + res[i].product + " | " + "$" + res[i].price);
-        }
+        // for (var i = 0; i < res.length; i++) {
+        //     // console.table("Item ID: " + res[i].id + " | " + res[i].product + " | " + "$" + res[i].price);
+        // }
+        console.table(res);
+
         console.log("-----------------------------------");
         userChoice(res);
     });
