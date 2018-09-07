@@ -52,6 +52,11 @@ function userChoice(res) {
 
               if (chosenItem.numLeft >= answer.numPurchase){
                   var currentStock = chosenItem.numLeft - answer.numPurchase;
+
+                  var totalCost = chosenItem.price * answer.numPurchase;
+            
+
+
                   connection.query("UPDATE products SET ? WHERE ?",
                 [
                     {
@@ -64,7 +69,7 @@ function userChoice(res) {
                 function(error){
                     if (error)
                     throw err;
-                    console.log("Your item has been purchased!!!")
+                    console.log("Your item has been purchased!!! Your total cost is $" + totalCost + ".")
                 }
             )
               } else {
